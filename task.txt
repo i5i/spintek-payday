@@ -1,0 +1,42 @@
+Testülesande kirjeldus:
+
+ 
+
+Spin TEKis makstakse töötasu iga kuu kümnendal kuupäeval. Töötasu saab maksta ainult tööpäeval, seega kui 10. kuupäev langeb nädalavahetusele või riigipühale, siis makstakse tasu välja sellele eelneval tööpäeval. Raamatupidaja soovib, et talle saadetaks meeldetuletus maksmise kohta kolm tööpäeva enne maksmise kuupäeva.
+
+ 
+
+1. Ülesandeks on kirjutada veebiteenus päringu jaoks, mille sisendiks on aastaarv (näiteks „GET /2024“) ning väljundiks valitud aasta iga kuu palgamaksmise kuupäev ja raamatupidajale meeldetuletuse saatmise kuupäev.
+
+2. Teenus peab väljundi andma JSON-formaadis, aga väljundi täpse struktuuri saad ise välja pakkuda.
+
+3. Palgamaksmise kuupäev peaks olema rakenduses häälestatav (näiteks kümnenda asemel kuu esimesel, viiendal või viimasel päeval). Häälestamine võib toimuda näiteks konfiguratsioonifaili kaudu, haldusliidest selleks tegema ei pea.
+
+4. Teenus peaks olema avalik (ilma autentimata ligipääsetav).
+
+5. Lahendus tuleb kirjutada PHP keeles. Muid piiranguid lahenduse teostamiseks ei ole.
+
+ 
+
+Ülesanne ei nõua mingi keeruka algoritmi realiseerimist, seega hindame pigem, et lahendus oleks korralikult vormistatud, hästi struktureeritud, testitud ja korrektne (n.ö production-ready). Samas palun mitte kulutada ülesande lahendamisele ebamõistlikult palju aega – mittenõutud funktsionaalsuse ja kellade-vilede lisamine lahendusele plusspunkte ei anna.
+
+ 
+
+Rakendusega palun kaasa panna juhend, kuidas rakendust kasutada.
+
+ 
+
+Kui oled valmis kandideerimisega jätkama, siis ootan Sinult testülesande lahendust hiljemalt tulevaks esmaspäevaks (04.03). Küsimuste korral võid mulle alati kirjutada.
+
+ 
+
+Soovin edu ja jään ootama tagasisidet!
+
+
+unit test? 
+config validation? 
+dockeriga kui palju vassida? 
+check formatting/style guide 
+
+README
+

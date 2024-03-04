@@ -35,11 +35,9 @@ class HomeController extends AbstractController
         $paydayParam =  $this->getParameter('app.payday.day_of_month');
 
         return new JsonResponse(
-            json_encode(
-                $workCalendar->getPaydaySchedule(
-                    $year,
-                    $paydayParam,
-                )
+            $workCalendar->getPaydaySchedule(
+                $year,
+                $paydayParam,
             )
         );
     }

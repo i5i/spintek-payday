@@ -37,3 +37,4 @@ To see what things look like in prod disable the debugger in .env
 
 >APP_ENV=prod
 
+(and of course don't use the example .env on prod)

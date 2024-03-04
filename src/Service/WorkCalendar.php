@@ -14,10 +14,10 @@ class WorkCalendar
     /**
      * setOutputFormat
      *
-     * Setter for outputFormat. 
-     * WorkCalendar will return dates in this format. 
+     * Setter for outputFormat.
+     * WorkCalendar will return dates in this format.
      * Default value is 'Y-m-d'.
-     * 
+     *
      * @param  string $outputFormat
      * @return void
      */
@@ -30,7 +30,7 @@ class WorkCalendar
      * setHolidayUtil
      *
      * Setter for HolidayUtil.
-     * 
+     *
      * @param  HolidayUtil $holidayUtil
      * @return void
      */
@@ -41,24 +41,24 @@ class WorkCalendar
 
     /**
      * getPaydaySchedule
-     * 
+     *
      * Returns array of 12 arrays each containing a notification and payday date as strings.
-     * 
-     * @param  int $year Return values for this year. Required. 
+     *
+     * @param  int $year Return values for this year. Required.
      * @param  int $dayOfMonth Payday of each month. Required.
      * @param  int $notifyAheadByDays Notification date set in advanced by this many work days . Defaults to 3. Optional.
      * @return array Example of output:
      *     [
-     *         0...11 => 
+     *         0...11 =>
      *         [
      *             notificationDate => '2024-12-07',
-     *             paydayDate => '2024-12-10',  
+     *             paydayDate => '2024-12-10',
      *         ]
-     *     ] 
+     *     ]
      */
     public function getPaydaySchedule(int $year, int $dayOfMonth, int $notifyAheadByDays = 3): array
     {
-        if ($dayOfMonth <= 0){
+        if ($dayOfMonth <= 0) {
             throw new InvalidArgumentException("Day of month must be configured as a positive integer.");
         }
 
@@ -90,10 +90,10 @@ class WorkCalendar
     private function moveDateToPrevFriday(DatePoint $date)
     {
         if ($date->format('N') == 7) {
-            //if sunday 
+            //if sunday
             $date = $date->modify('-2 day');
         } elseif ($date->format('N') == 6) {
-            //if saturday 
+            //if saturday
             $date = $date->modify('-1 day');
         }
         return $date;
@@ -101,7 +101,7 @@ class WorkCalendar
 
     private function getNotificationDate(DatePoint $notificationDate, int $notifyAheadByDays)
     {
-        //count work days while skipping past public holidays and weekends 
+        //count work days while skipping past public holidays and weekends
         $util = $this->holidayUtil;
         for ($i = 1; $i <= $notifyAheadByDays; $i++) {
             $notificationDate = $notificationDate->modify('-1 day');

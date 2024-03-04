@@ -25,7 +25,7 @@ install vendors with composer
 
 ```composer install```
 
-then start symfony CLI test server
+then start symfony CLI test server (found at https://symfony.com/download)
 
 ```symfony server:start```
 

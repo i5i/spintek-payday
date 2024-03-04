@@ -14,7 +14,7 @@ class PostControllerTest extends WebTestCase
         $this->assertResponseIsSuccessful();
         $response = $client->getResponse();
         $content = $response->getContent();
-        $jsonData = json_decode(json_decode($content,true),true);
+        $jsonData = json_decode($content,true);
         $this->assertArrayHasKey('paydayDate', $jsonData[0]);
         $this->assertArrayHasKey('notificationDate', $jsonData[0]);
         $this->assertArrayHasKey('paydayDate', $jsonData[11]);

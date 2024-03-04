@@ -31,12 +31,3 @@ Kui oled valmis kandideerimisega jätkama, siis ootan Sinult testülesande lahen
  
 
 Soovin edu ja jään ootama tagasisidet!
-
-
-unit test? 
-config validation? 
-dockeriga kui palju vassida? 
-check formatting/style guide 
-
-README
-

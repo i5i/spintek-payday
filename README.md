@@ -15,7 +15,7 @@ Example of output:
     {
         0...11:
         {
-             notificationDate : "2024-12-07",
+            notificationDate : "2024-12-07",
             paydayDate : "2024-12-10",
         }
     }

@@ -74,8 +74,8 @@ class WorkCalendar
             $paydayDate = new DatePoint("$year-$month-$day");
             $this->setHolidayUtil(new HolidayUtil());
 
-            //adjust payday date if necessary
-            $paydayDate = $this->adjustPayday($paydayDate);
+            //move date back in time if it falls on a non-workday
+            $paydayDate = $this->adjustDate($paydayDate);
             $notificationDate = $this->getNotificationDate($paydayDate, $notifyAheadByDays);
 
             $returnArray[] = [
@@ -87,47 +87,29 @@ class WorkCalendar
         return $returnArray;
     }
 
-    private function moveDateToPrevFriday(DatePoint $date)
-    {
-        if ($date->format('N') == 7) {
-            //if sunday
-            $date = $date->modify('-2 day');
-        } elseif ($date->format('N') == 6) {
-            //if saturday
-            $date = $date->modify('-1 day');
-        }
-        return $date;
-    }
-
     private function getNotificationDate(DatePoint $notificationDate, int $notifyAheadByDays)
     {
         //count work days while skipping past public holidays and weekends
         $util = $this->holidayUtil;
         for ($i = 1; $i <= $notifyAheadByDays; $i++) {
             $notificationDate = $notificationDate->modify('-1 day');
-            while (
-                $util->isHoliday('EE', $notificationDate->format('Y-m-d')) ||
-                $notificationDate->format('N') >= 6
-            ) {
-                $notificationDate = $notificationDate->modify('-1 day');
-            }
+            $notificationDate = $this->adjustDate($notificationDate);
         }
 
         return $notificationDate;
     }
 
-    private function adjustPayday(DatePoint $paydayDate)
+    private function adjustDate(DatePoint $date)
     {
-        //check day does not fall on weekend
-        $paydayDate = $this->moveDateToPrevFriday($paydayDate);
-
-        //check against public holidays
         $util = $this->holidayUtil;
-
-        while ($util->isHoliday('EE', $paydayDate->format('Y-m-d'))) {
-            $paydayDate = $paydayDate->modify('-1 day');
+        //check against public holidays and weekends
+        while (
+            $util->isHoliday('EE', $date->format('Y-m-d')) ||
+            $date->format('N') >= 6
+        ) {
+            $date = $date->modify('-1 day');
         }
 
-        return $paydayDate;
+        return $date;
     }
 }
